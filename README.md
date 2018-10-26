@@ -31,3 +31,11 @@ C:\Users\Jacob\Desktop
 ### conda install
 [Anaconda](https://www.anaconda.com/) is the most popular Python data science platform with 6 million users.
 > `$ conda install scrapy=1.5`    
+
+
+[angelimg](http://www.angelimg.com/)  
+`$ scrapy startproject angelimg www.angelimg.com`
+
+Scrapy\www.angelimg.com  
+`$ scrapy genspider -t crawl angelspider www.angelimg.com`  
+> spiders\angelspider.py
