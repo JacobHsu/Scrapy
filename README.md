@@ -39,3 +39,21 @@ C:\Users\Jacob\Desktop
 Scrapy\www.angelimg.com  
 `$ scrapy genspider -t crawl angelspider www.angelimg.com`  
 > spiders\angelspider.py
+
+
+### Notes
+
+angelspider.py  `http://www.angelimg.com/index/\d+` 翻頁規則
+
+
+Scrapy\www.angelimg.com (master)  
+`$ scrapy list` 查看當下有多少爬蟲  
+> angelspider  
+
+`$ scrapy crawl angelspider`  執行 
+> Crawled (200) `<GET http://www.angelimg.com/index/2> (referer: http://www.angelimg.com/)`  
+
+#### debug
+
+[Python運行scrapy報錯:ImportError: No module named win32api](https://blog.csdn.net/u011781521/article/details/70170783)  
+`$ pip install pypiwin32`
