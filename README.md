@@ -41,6 +41,10 @@ Scrapy\www.angelimg.com
 > spiders\angelspider.py
 
 
+### Usage
+
+`$ scrapy crawl angelspider`
+
 ### Notes
 
 angelspider.py  `http://www.angelimg.com/index/\d+` 翻頁規則
