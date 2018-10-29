@@ -14,22 +14,28 @@ www.angelimg.com
 import scrapy
 from scrapy.linkextractors import LinkExtractor
 from scrapy.spiders import CrawlSpider, Rule
+from ..items import AngelimgItem
+from scrapy.pipelines.images import ImagesPipeline
 
 # scrapy genspider -t crawl angelspider www.angelimg.com  
 class AngelspiderSpider(CrawlSpider):
     name = 'angelspider'
     allowed_domains = ['angelimg.com']
-    start_urls = ['http://www.angelimg.com/']
-    #start_urls = ['http://www.angelimg.com/ang/1440']
+    #start_urls = ['http://www.angelimg.com/']
+    start_urls = ['http://www.angelimg.com/ang/1440']
 
     rules = (
         Rule(LinkExtractor(allow=r'http://www.angelimg.com/ang/\d+/\d+'), callback='parse_item', follow=True),
-        Rule(LinkExtractor(allow=r'http://www.angelimg.com/ang/\d+'),  follow=True),
-        Rule(LinkExtractor(allow=r'http://www.angelimg.com/index/\d+'), follow=True),
+        #Rule(LinkExtractor(allow=r'http://www.angelimg.com/ang/\d+'),  follow=True),
+        #Rule(LinkExtractor(allow=r'http://www.angelimg.com/index/\d+'), follow=True),
     )
 
     def parse_item(self, response):
-        print(response.url,'------')
+        #print(response.url,'------')
+        item = AngelimgItem()
+        item['image_urls'] = response.xpath('.//div[@id="content"]//img/@src').extract()
+        #print(item,'------')
+        yield item
         #i = {}
         #i['domain_id'] = response.xpath('//input[@id="sid"]/@value').extract()
         #i['name'] = response.xpath('//div[@id="name"]').extract()

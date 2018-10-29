@@ -61,3 +61,10 @@ Scrapy\www.angelimg.com (master)
 
 [Python運行scrapy報錯:ImportError: No module named win32api](https://blog.csdn.net/u011781521/article/details/70170783)  
 `$ pip install pypiwin32`
+
+ImportError: No module named PIL 
+`$ pip install Pillow`
+
+chrome F12 / Ctrl+F5 打開搜索 `.//div[@id="content"]/a/img`  
+
+from ..items import `AngelimgItem` 對應 items.py 的 class `AngelimgItem`  
