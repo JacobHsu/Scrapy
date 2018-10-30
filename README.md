@@ -43,6 +43,7 @@ Scrapy\www.angelimg.com
 
 ### Usage
 
+Scrapy\www.angelimg.com (master)  
 `$ scrapy crawl angelspider`
 
 ### Notes
@@ -56,6 +57,39 @@ Scrapy\www.angelimg.com (master)
 
 `$ scrapy crawl angelspider`  執行 
 > Crawled (200) `<GET http://www.angelimg.com/index/2> (referer: http://www.angelimg.com/)`  
+
+
+#### 圖片下載鏈接 
+
+圖片的下載通常需要解決防盜鏈問題，也就是請求圖片內容需要指定請求頭部的Referer字段。   
+只需要將Referer值寫成爬取的目標網站的域名。 
+
+爬蟲的請求頭設置
+settings.py
+```
+DEFAULT_REQUEST_HEADERS = {
+  'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
+  'Accept-Language': 'en',
+  'Referer':'http://www.angelimg.com',
+}
+```
+####  圖片保存本地
+
+得到圖片的鏈接，下載的話，可以使用scrapy內部的圖片管道
+
+1. 在配置文件中註冊圖片管道
+settings.py
+```
+ITEM_PIPELINES = {
+   'scrapy.pipelines.images.ImagesPipeline': 300,
+}
+
+``` 
+2. 指定存儲地址 
+```
+IMAGES_STORE = 'imgs'
+```
+檔案會在 imgs\full  
 
 #### debug
 
